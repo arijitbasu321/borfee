@@ -47,7 +47,7 @@ queue_add.add_argument('remove_queue_name', help='Type queue name')
 # job cmd args section
 subparsers = job_grp.add_subparsers()
 job_list = subparsers.add_parser('list')
-job_list.add_argument('job_list', nargs='?', help='Type list to get list of jobs')
+job_list.add_argument('job_id_list', nargs='?', help='Type list to get list of jobs')
 job_submit = subparsers.add_parser('submit')
 job_submit.add_argument('submit_job', help='Type job details')
 job_kill = subparsers.add_parser('kill')
@@ -74,12 +74,16 @@ if 'master_hostname' in args:
     print(f"[MSG] Host {args.master_hostname} is now master")
 
 # Process node args
-if 'node_list' in args:
+if 'node_list' in args and args.node_list is None:
     print("<show table of nodes here>")
-if 'node_hostname' in args and 'node_add_queue_name' in args:
-    print(f"[MSG] Node {args.node_hostname} added to {args.node_add_queue_name}")
-if 'node_hostname' in args and 'node_remove_queue_name' in args:
-    print(f"[MSG] Node {args.node_hostname} removed from {args.node_remove_queue_name}")
+elif 'node_list' in args and args.node_list:
+    print("<show details of node here>")
+else:
+    pass
+if 'node_hostname' in args and 'add_node_queue_name' in args:
+    print(f"[MSG] Node {args.node_hostname} added to {args.add_node_queue_name}")
+if 'node_hostname' in args and 'remove_node_queue_name' in args:
+    print(f"[MSG] Node {args.node_hostname} removed from {args.remove_node_queue_name}")
 
 # Process queue args
 if 'queue_list' in args:
@@ -90,8 +94,12 @@ if 'remove_queue_name' in args:
     print(f"[MSG] Removed queue {args.remove_queue_name}")
 
 # Process job args
-if 'job_list' in args:
+if 'job_id_list' in args and args.job_id_list is None:
     print("<show table of jobs here>")
+elif 'job_id_list' in args and args.job_id_list:
+    print(f"<show details for {args.job_id_list}>")
+else:
+    pass
 if 'submit_job' in args:
     print(f"[MSG] <job-id> submitted")
 if 'kill_job' in args:
