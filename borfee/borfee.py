@@ -13,7 +13,6 @@ node_grp = subparsers.add_parser('node')
 queue_grp = subparsers.add_parser('queue')
 job_grp = subparsers.add_parser('job')
 
-
 # Master cmd args section
 subparsers = master_grp.add_subparsers()
 master_action = subparsers.add_parser('init')
@@ -53,7 +52,6 @@ job_submit = subparsers.add_parser('submit')
 job_submit.add_argument('submit_job', help='Type job details')
 job_kill = subparsers.add_parser('kill')
 job_kill.add_argument('kill_job', help='Type job id')
-
 
 # Parse args
 args = parser.parse_args()
