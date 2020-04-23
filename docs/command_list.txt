@@ -15,7 +15,7 @@ borfee master add <master_hostname>
 
     * run on all other nodes(submit and execution)
     * creates a config file with the master hostname
-    * Allows job subm   ission
+    * Allows job submission
 
 borfee master remove
 

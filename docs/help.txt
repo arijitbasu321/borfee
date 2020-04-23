@@ -1,0 +1,30 @@
+Usage:  borfee [OPTIONS] COMMAND
+
+
+A self-sufficient runtime for containers
+
+Options:
+
+  -v, --version            Print version information and quit
+
+Commands:
+  master
+        init:   Initializes the server module on master node
+        halt:   Stops the server module on master node
+        add:    Add master hostname config file
+        remove: Removes master hostname from config file
+  node
+        list:   Get list of nodes
+        add:    Add node to cluster and queue
+        remove: Remove node from cluster and queue
+  queue
+        list:   Get list of queues
+        add:    Add queue to cluster
+        remove: Remove queue from cluster
+  job
+        list:   Get list of jobs
+        submit: Submit job
+        kill:   Kill job
+
+
+Run 'borfee COMMAND --help' for more information on a command.

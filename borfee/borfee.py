@@ -4,7 +4,12 @@
 import argparse
 import sys
 import os
-parser = argparse.ArgumentParser()
+
+
+
+parser = argparse.ArgumentParser(prog='borfee', add_help=False, usage=argparse.SUPPRESS)
+parser.add_argument('-h', '--help', nargs='?', help='Show this help message and exit.')
+parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.0')
 subparsers = parser.add_subparsers()
 
 # Top level subparser's parsers
@@ -57,10 +62,10 @@ job_kill.add_argument('kill_job', help='Type job id')
 args = parser.parse_args()
 #print(args)
 
-# Check if any argument was passed
-if not len(sys.argv) > 2:
-    print("[ERR] Incomplete command. please use -h  for help")
-    sys.exit(1)
+# Display help
+if len(sys.argv) == 2:
+    os.system('cat /opt/borfee/conf/help.txt')
+    sys.exit(0)
 
 # Process master args
 if 'master_init' in args:
