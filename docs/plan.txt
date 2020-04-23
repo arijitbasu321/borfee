@@ -1,0 +1,56 @@
+Programming language: Python3
+database: MariaDB
+
+Architecture:
+
+Database tables:
+master node
+submission node
+execution node
+queues
+jobs
+
+
+Roles:
+1) client:
+    > Job submission
+2) server:
+    > database
+    > scheduling & resource matching
+    > connection with execute node
+3) execution: (master/slave)
+    > execution of job
+
+4) logging and accounting
+    > logging
+    > accounting system activity
+5) monitoring
+    > monitor system resources
+
+modules:
+    1) central module
+       * Recives requests from command and store them in a buffer
+       * Take request from the buffer and act on it
+            > scheduler (resource matching)
+            > execution master part (with connector)
+       * also periodically runs scheduling and execution
+
+    2) command module
+       * Writes info to database
+       * notifies central module
+
+
+
+
+queues: [
+   queue1: {
+     jobs: [
+       job1 {},
+       job2: {}
+     ],
+     nodes: [
+        node1: {},
+        node2: {}
+     ]
+     }
+   ]

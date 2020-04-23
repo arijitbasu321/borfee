@@ -1,0 +1,42 @@
+version: '3.3'
+
+
+services:
+  master-node:
+    image: borfeevox1
+    hostname: master-node
+    container_name: master-node
+    networks:
+     - borfee-dev-net
+    volumes:
+      - type: bind
+        source: ../../borfee
+        target: /root/tests
+    command: ["tail", "-f", "/dev/null"]
+
+  submit-node:
+    image: borfeevox1
+    hostname: submit-node
+    container_name: submit-node
+    networks:
+     - borfee-dev-net
+    volumes:
+      - type: bind
+        source: ../../borfee
+        target: /root/tests
+    command: ["tail", "-f", "/dev/null"]
+
+  execute-node:
+    image: borfeevox1
+    hostname: execute-node
+    container_name: execute-node
+    networks:
+     - borfee-dev-net
+    volumes:
+      - type: bind
+        source: ../../borfee
+        target: /root/tests
+    command: ["tail", "-f", "/dev/null"]
+
+networks:
+ borfee-dev-net:

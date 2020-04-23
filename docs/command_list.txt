@@ -1,32 +1,3 @@
-Programming language: Python3
-database: MariaDB
-
-Architecture:
-
-Database tables:
-master node
-submission node
-execution node
-queues
-jobs
-
-
-modules:
-1) client:
-    > Job submission
-2) server:
-    > database
-    > scheduling & resource matching
-    > connection with execute node
-5) execute:
-    > execution of job
-
-3) logging and accounting
-    > logging
-    > accounting system activity
-4) monitoring
-    > monitor system resources
-
 Command Structure
 
 borfee master init
@@ -44,46 +15,46 @@ borfee master add <master_hostname>
 
     * run on all other nodes(submit and execution)
     * creates a config file with the master hostname
-    * Allows job submission
+    * Allows job subm   ission
 
 borfee master remove
 
     * runs on all other nodes (submit and execution)
     * removes the master config file
 
-borfee node add <node_hostname>
-
-    * runs on execution node
-    * establishes connection with master to recieve jobs
-
-borfee node add <node_hostname>
-
-    * runs on execution node
-    * removes node from database
-
 borfee node list
 
     * list all nodes
 
-bofree queue add
+borfee node add <node_hostname> <queue_anme>
 
-    * add a new queue
+    * runs on execution node
+    * establishes connection with master to recieve jobs
 
-borfee queue remove
+borfee node remove <node_hostname> <queue_name>
 
-    * remove a queue
+    * runs on execution node
+    * removes node from database
 
 borfee queue list
 
     * list all queues
 
-borfee job submit
+bofree queue add <queue_name>
 
-    * submit a job
+    * add a new queue
+
+borfee queue remove <queue_name>
+
+    * remove a queue
 
 borfee job list
 
     * list all jobs
+
+borfee job submit
+
+    * submit a job
 
 borfee job kill
 
